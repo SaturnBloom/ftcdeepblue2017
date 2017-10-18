@@ -1,6 +1,8 @@
 # ftcdeepblue2017
-FTC 2017/18 competition 
+FTC 2017/18 competition
+
 This repository is for programming team of Deep Blue 2017
+
 
 Don't make any change on your own to Master branch.
 
