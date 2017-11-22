@@ -9,10 +9,10 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
 @TeleOp(name="BHA: TeleOp (with Shooter)", group="BHA")
-public class JIU_BHA_TeleOp_Test extends OpMode{
+public class JIU_BHA_TeleOp_Grabber_Test extends OpMode{
 
     /* Declare OpMode members. */
-    JIU_HardwareBHA_Test robot       = new JIU_HardwareBHA_Test(); //define a robot object from JIU_HardwareBHA_Test class
+    JIU_HardwareBHA_Grabber_Test robot       = new JIU_HardwareBHA_Grabber_Test(); //define a robot object from JIU_HardwareBHA_Test class
     double glimpseLServoPosition = 200;
     double glimpseRServoPosition = 100;
     /* Declare Motor Power constants */
@@ -54,12 +54,6 @@ public class JIU_BHA_TeleOp_Test extends OpMode{
         double right;
 
         /* GAMEPAD #1 */
-
-        // The joystick goes negative when pushed forwards, so negate it
-        left = -gamepad1.left_stick_y;
-        right = -gamepad1.right_stick_y;
-        robot.leftMotor.setPower(left);
-        robot.rightMotor.setPower(right);
 
         // Left Bumper: Increase glimpseLServo Position by 10
         if (gamepad1.left_bumper) {
@@ -139,8 +133,6 @@ public class JIU_BHA_TeleOp_Test extends OpMode{
      */
     @Override
     public void stop() {
-        robot.rightMotor.setPower(0);
-        robot.leftMotor.setPower(0);
         robot.glimpseLServo.setPosition(200);
         robot.glimpseRServo.setPosition(100);
             /*

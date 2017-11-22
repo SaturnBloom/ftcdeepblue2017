@@ -1,10 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.I2cAddr;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -20,13 +17,9 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Note:  All names are lower case and some have single spaces between words.
  *
  */
-public class JIU_HardwareBHA_Test
+public class JIU_HardwareBHA_Grabber_Test
 {
     /* Public OpMode members. */
-    public DcMotor  leftMotor   = null;
-    public DcMotor  rightMotor  = null;
-
-    public ColorSensor colorSensor = null;
 
     public Servo glimpseLServo = null; // Left Servo for Glimpse
     public Servo glimpseRServo = null; // Right Servo for Glimpse
@@ -43,7 +36,7 @@ public class JIU_HardwareBHA_Test
     private ElapsedTime period  = new ElapsedTime();
 
     /* Constructor */
-    public JIU_HardwareBHA_Test(){
+    public JIU_HardwareBHA_Grabber_Test(){
 
     }
 
@@ -53,23 +46,11 @@ public class JIU_HardwareBHA_Test
         hwMap = ahwMap;
 
         // Define and Initialize Motors: Phone Configuration Variables
-        leftMotor = hwMap.dcMotor.get("left_motor");
-        rightMotor = hwMap.dcMotor.get("right_motor");
-
-        colorSensor = hwMap.colorSensor.get("color_sensor");
 
         glimpseLServo = hwMap.servo.get("glimpse_l_servo");
         glimpseRServo = hwMap.servo.get("glimpse_r_servo");
 
         // gyro = (ModernRoboticsI2cGyro)hwMap.gyroSensor.get("gyro");
-
-        // MAY HAVE TO EDIT OTHER MOTORS IF THEY BEHAVE WEIRD...
-        leftMotor.setDirection(DcMotor.Direction.FORWARD); // Set to REVERSE if using AndyMark motors
-        rightMotor.setDirection(DcMotor.Direction.REVERSE);// Set to FORWARD if using AndyMark motors
-
-        // Set all motors to zero power
-        leftMotor.setPower(0);
-        rightMotor.setPower(0);
 
         // Intialize ALL installed servos
         glimpseLServo.scaleRange(1,250);
@@ -77,17 +58,6 @@ public class JIU_HardwareBHA_Test
 
         glimpseRServo.scaleRange(1,250);
         glimpseRServo.setPosition(glimpseRServoInitial); //Set position to low-state inside the lift
-
-        // Set hardware values for both ColorSensors
-        colorSensor.setI2cAddress(I2cAddr.create8bit(0x3a));
-
-        // LED COMMENTED OUT DUE TO FIRMWARE ISSUES: Use Core Device Discovery to Change LEDs
-        // Turn ON LED lights as default (may change later)
-        // colorSensor1.enableLed(true);
-
-        // May want to use RUN_USING_ENCODERS if encoders are installed.
-        leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER); // RUN WITH ENCODER
-        rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER); // RUN WITH ENCODER
 
     }
     /***
