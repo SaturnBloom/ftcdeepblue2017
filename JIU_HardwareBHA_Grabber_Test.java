@@ -23,8 +23,8 @@ public class JIU_HardwareBHA_Grabber_Test
 
     public Servo glimpseLServo = null; // Left Servo for Glimpse
     public Servo glimpseRServo = null; // Right Servo for Glimpse
-    public double glimpseLServoInitial = 200;
-    public double glimpseRServoInitial = 100;
+    public double glimpseLServoInitial = 0.32;
+    public double glimpseRServoInitial = 0.68;
 
     // public GyroSensor gyro = null;
 
@@ -53,10 +53,10 @@ public class JIU_HardwareBHA_Grabber_Test
         // gyro = (ModernRoboticsI2cGyro)hwMap.gyroSensor.get("gyro");
 
         // Intialize ALL installed servos
-        glimpseLServo.scaleRange(1,250);
+        glimpseLServo.scaleRange(0.0,1.0);
         glimpseLServo.setPosition(glimpseLServoInitial); //Set position to top/middle
 
-        glimpseRServo.scaleRange(1,250);
+        glimpseRServo.scaleRange(0.0,1.0);
         glimpseRServo.setPosition(glimpseRServoInitial); //Set position to low-state inside the lift
 
     }
