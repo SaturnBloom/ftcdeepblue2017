@@ -13,8 +13,9 @@ public class JIU_BHA_TeleOp_Grabber_Test extends OpMode{
 
     /* Declare OpMode members. */
     JIU_HardwareBHA_Grabber_Test robot       = new JIU_HardwareBHA_Grabber_Test(); //define a robot object from JIU_HardwareBHA_Test class
-    double glimpseLServoPosition = 200;
-    double glimpseRServoPosition = 100;
+    double glimpseLServoPosition = 0.6;
+    double glimpseRServoPosition = 0.4;
+    boolean Servo = true;
     /* Declare Motor Power constants */
 
 
@@ -55,16 +56,36 @@ public class JIU_BHA_TeleOp_Grabber_Test extends OpMode{
 
         /* GAMEPAD #1 */
 
-        // Left Bumper: Increase glimpseLServo Position by 10
-        if (gamepad1.left_bumper) {
-            glimpseLServoPosition = glimpseLServoPosition + 10;
-            robot.glimpseLServo.setPosition(glimpseLServoPosition);
-        }
-        // Right Bumper: Increase glimpseRServo Position by 10
-        if (gamepad1.right_bumper) {
-            glimpseRServoPosition = glimpseRServoPosition + 10;
-            robot.glimpseRServo.setPosition(glimpseRServoPosition);
-        }
+
+            // Left Bumper: Increase glimpseLServo Position by 10
+            if (gamepad1.left_bumper) {
+                glimpseLServoPosition = 0.35;
+                glimpseRServoPosition = 0.65;
+                robot.glimpseLServo.setPosition(glimpseLServoPosition);
+                robot.glimpseRServo.setPosition(glimpseRServoPosition);
+
+            }
+            // Right Bumper: Increase glimpseRServo Position by 10
+            if (gamepad1.right_bumper) {
+                glimpseLServoPosition = 0.58;
+                glimpseRServoPosition = 0.38;
+                robot.glimpseLServo.setPosition(glimpseLServoPosition);
+                robot.glimpseRServo.setPosition(glimpseRServoPosition);
+            }
+
+            /*if(glimpseLServoPosition==0.5){
+                glimpseLServoPosition = 0.68;
+                robot.glimpseLServo.setPosition(glimpseLServoPosition);
+            }
+            if (glimpseRServoPosition==0.5){
+                glimpseRServoPosition = 0.32;
+                robot.glimpseRServo.setPosition(glimpseRServoPosition);
+
+            }
+*/
+
+
+
 
 /*
         // BUTTON A: Start Ball Collector with Power BALL_COLLECTOR_POWER
@@ -133,8 +154,9 @@ public class JIU_BHA_TeleOp_Grabber_Test extends OpMode{
      */
     @Override
     public void stop() {
-        robot.glimpseLServo.setPosition(200);
-        robot.glimpseRServo.setPosition(100);
+        robot.glimpseLServo.setPosition(0.6);
+        robot.glimpseRServo.setPosition(0.4);
+        Servo = false;
             /*
         robot.ballCollector.setPower(0);
         robot.ballLift.setPower(0);
